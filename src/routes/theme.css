@@ -1,0 +1,105 @@
+@import 'reveal.js/theme/black.css';
+
+:root {
+	--r-heading-text-transform: none;
+	--r-heading-letter-spacing: -0.02em;
+	--r-main-font-size: 28px;
+}
+
+.reveal {
+	font-size: var(--r-main-font-size);
+}
+
+.reveal h1 {
+	font-size: 1.8em;
+	line-height: 1.2;
+}
+
+.reveal h2 {
+	font-size: 1.4em;
+	line-height: 1.2;
+}
+
+.reveal h3 {
+	font-size: 1.1em;
+	line-height: 1.3;
+}
+
+.reveal h4 {
+	font-size: 1em;
+}
+
+.reveal p {
+	font-size: 1em;
+	line-height: 1.4;
+	margin-bottom: 0.5em;
+}
+
+.reveal ul,
+.reveal ol {
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+.reveal li {
+	margin: 0.3em 0;
+}
+
+.reveal section {
+	padding: 20px;
+}
+
+.reveal code {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	padding: 0.15em 0.4em;
+	font-size: 0.9em;
+}
+
+.reveal pre {
+	margin: 0.5em 0;
+	font-size: 0.85em;
+}
+
+.reveal pre code {
+	background: transparent;
+	padding: 0;
+}
+
+.reveal blockquote {
+	padding: 0.5em 1em;
+}
+
+.reveal table {
+	font-size: 0.9em;
+}
+
+.reveal table th,
+.reveal table td {
+	padding: 0.4em 0.8em;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reveal .slides section {
+	text-align: left;
+}
+
+.reveal .slides section[data-align='center'] {
+	text-align: center;
+}
+
+.reveal .slides section[data-align='center'] h1,
+.reveal .slides section[data-align='center'] h2,
+.reveal .slides section[data-align='center'] h3 {
+	text-align: center;
+}
+
+.reveal .slides section[data-align='right'] {
+	text-align: right;
+}
+
+.reveal .slides section[data-align='right'] h1,
+.reveal .slides section[data-align='right'] h2,
+.reveal .slides section[data-align='right'] h3 {
+	text-align: right;
+}

@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+@import '@fontsource/commit-mono';
+@import '@fontsource/bricolage-grotesque';
+@import '@fontsource/architects-daughter';
+
+:root {
+	--r-main-font: 'Bricolage Grotesque';
+	--r-heading-font: 'Bricolage Grotesque';
+	--r-code-font: 'Commit Mono';
+}
+
+.script {
+	font-family: 'Architects Daughter' cursive;
+}
+
+@layer base {
+	[hidden] {
+		display: revert !important;
+	}
+}
