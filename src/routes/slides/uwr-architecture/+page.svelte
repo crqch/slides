@@ -16,8 +16,10 @@
 <Slide>
 	<Slide align="center">
 		<h2>How much buildings does the University have?</h2>
-		<p class="fragment">many...</p>
-		<p>Almost 50 different buildings!</p>
+		<span class="fragment">
+			<p>many...</p>
+			<p>Almost 50 different buildings!</p>
+		</span>
 	</Slide>
 	{#each [0, 1, 2] as key}
 		<Slide align="center" transition={'zoom'}>
