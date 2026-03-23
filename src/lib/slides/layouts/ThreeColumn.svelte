@@ -1,28 +1,31 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { ClassValue } from 'svelte/elements';
 
 	const {
 		first,
 		second,
 		third,
+		columnClass,
 		gap = '1.5rem'
 	}: {
 		first?: Snippet;
 		second?: Snippet;
 		third?: Snippet;
+		columnClass?: ClassValue;
 		gap?: string;
 	} = $props();
 </script>
 
 <div class="three-column" style:--gap={gap}>
 	{#if first}
-		<div class="column">{@render first()}</div>
+		<div class={`column ${columnClass}`}>{@render first()}</div>
 	{/if}
 	{#if second}
-		<div class="column">{@render second()}</div>
+		<div class={`column ${columnClass}`}>{@render second()}</div>
 	{/if}
 	{#if third}
-		<div class="column">{@render third()}</div>
+		<div class={`column ${columnClass}`}>{@render third()}</div>
 	{/if}
 </div>
 

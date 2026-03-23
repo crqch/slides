@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Slide from '$lib/components/Slide.svelte';
 	import TitleSlide from '$lib/slides/layouts/TitleSlide.svelte';
-	import TwoColumn from '$lib/slides/layouts/TwoColumn.svelte';
 </script>
 
 <Slide>

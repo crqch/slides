@@ -10,8 +10,13 @@
 	--r-code-font: 'Commit Mono';
 }
 
-.script {
-	font-family: 'Architects Daughter' cursive;
+@utility font-script {
+	font-family: 'Architects Daughter', cursive;
+}
+
+@utility always-visible {
+	opacity: 1 !important;
+	visibility: visible !important;
 }
 
 @layer base {
