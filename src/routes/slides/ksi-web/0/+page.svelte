@@ -54,7 +54,7 @@
 	<Slide>
 		<h1 class="text-white">spotkania</h1>
 		<ul class="list-disc p-0 text-start text-lg">
-			<li class="fragment">odbywają się w każdy wtorek 16:00, fizycznie w pokoju koła</li>
+			<li class="fragment">odbywają się w każdy wtorek 16:00, fizycznie w pokoju koła</li>
 			<li class="fragment">obecność/bycie na bieżąco obowiązkowe</li>
 		</ul>
 	</Slide>
@@ -203,7 +203,7 @@ wiersza</tag>`}
 	</Slide>
 	<Slide class="flex-start h-screen w-screen">
 		Niektóre tagi nie wykorzystują zawartości. Wtedy możemy je zapisać w skróconej formie:
-		<Highlight language={xml} code={`<tag />`} />
+		<Highlight language={xml} code="<tag />" />
 
 		<div class="fragment">
 			Każdemu elementowi HTML możemy nadać jakieś atrybuty (attributes), np:
@@ -212,7 +212,7 @@ wiersza</tag>`}
 
 		<div class="fragment">
 			Można ustawiać atrybuty na pusty string ('') używając skróconej formy:
-			<Highlight language={xml} code={`<tekst pogrubiony>Hello World!</tekst>`} />
+			<Highlight language={xml} code="<tekst pogrubiony>Hello World!</tekst>" />
 			Zazwyczaj tej formy stosuje się do wartości reprezentującą boolean.
 		</div>
 	</Slide>
@@ -244,14 +244,13 @@ wiersza</tag>`}
 		<p class="mb-8">
 			To, jak element zachowuje się w układzie, zależy od jego domyślnego typu wyświetlania.
 		</p>
-
 		<TwoColumn columnClass="gap-8 text-lg">
 			{#snippet left()}
 				<div
 					class="flex flex-col gap-4 rounded-lg border-2 border-fuchsia-400 bg-fuchsia-400/5 p-6"
 				>
 					<h2 class="font-bold! text-fuchsia-400">
-						Block (np. <code>{'<div>'}</code>, <code>{'<p>'}</code>)
+						Block (np. <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>)
 					</h2>
 					<ul class="list-disc space-y-2 text-start">
 						<li>Zajmuje <b>całą dostępną szerokość</b> (100%).</li>

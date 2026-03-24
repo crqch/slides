@@ -3,12 +3,19 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import monacoEditorPlugin from 'vite-plugin-monaco-editor';
 
-export default defineConfig({
+const monacoPluginFactory =
+	typeof monacoEditorPlugin === 'function' ? monacoEditorPlugin : monacoEditorPlugin.default;
+
+export default defineConfig(({ command }) => ({
 	plugins: [
 		tailwindcss(),
 		sveltekit(),
-		(typeof monacoEditorPlugin === 'function' ? monacoEditorPlugin : monacoEditorPlugin.default)({
-			languageWorkers: ['html', 'css', 'typescript']
-		})
+		...(command === 'build'
+			? [
+					monacoPluginFactory({
+						languageWorkers: ['html', 'css', 'typescript']
+					})
+				]
+			: [])
 	]
-});
+}));

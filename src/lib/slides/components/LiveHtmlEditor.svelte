@@ -4,14 +4,13 @@
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-	import Reveal from 'reveal.js';
 	import { getContext } from 'svelte';
 
 	let { initialSteps = [''] } = $props();
 	// Stan
-	let steps = $state<string[]>(initialSteps);
+	let steps = $state<string[]>(['']);
 	let currentIndex = $state(0);
-	let editorValue = $state(steps[0]);
+	let editorValue = $state('');
 	let isEditMode = $state(false);
 
 	let editorElement = $state<HTMLElement | undefined>();
@@ -111,6 +110,14 @@
 	};
 
 	$effect(() => {
+		const normalized = initialSteps.length > 0 ? [...initialSteps] : [''];
+		steps = normalized;
+		currentIndex = 0;
+		editorValue = normalized[0] ?? '';
+		if (editor) editor.setValue(editorValue);
+	});
+
+	$effect(() => {
 		// Jeśli deck już istnieje (np. zmiana slajdu po inicjalizacji)
 		if (reveal.deck) {
 			const deck = reveal.deck;
@@ -131,8 +138,8 @@
 
 	const goToStep = (index: number) => {
 		currentIndex = index;
-		editorValue = steps[index];
-		editor.setValue(editorValue);
+		editorValue = steps[index] ?? '';
+		if (editor) editor.setValue(editorValue);
 	};
 
 	const saveAsNew = () => {
@@ -142,6 +149,7 @@
 
 	const updateCurrent = () => {
 		steps[currentIndex] = editorValue;
+		steps = [...steps];
 	};
 
 	const exportJson = () => {
@@ -150,19 +158,15 @@
 		alert('Eksportowano do schowka!');
 	};
 
-	function handleKeydown(e: KeyboardEvent) {
-		e.stopPropagation();
-	}
-
 	let injectedHtml = $derived(`
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         \<script src="https://cdn.tailwindcss.com">\</script\>
-        
+
         \<script\>
             // Konfiguracja Tailwinda, aby pasował do Twojej prezentacji
             tailwind.config = {
@@ -246,7 +250,7 @@
 			{/if}
 		</aside>
 
-		<div class="border-r border-white/5 bg-[#1e1e1e]" onkeydown={handleKeydown}>
+		<div class="border-r border-white/5 bg-[#1e1e1e]">
 			<div bind:this={editorElement} class="h-full w-full"></div>
 		</div>
 

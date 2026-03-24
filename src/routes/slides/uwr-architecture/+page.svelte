@@ -29,6 +29,9 @@
 			</p>
 		</Slide>
 	{/each}
+	<Slide>
+		<h2>Palimpsest</h2>
+	</Slide>
 </Slide>
 
 <Slide align="center">

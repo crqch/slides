@@ -120,8 +120,4 @@
 		opacity: 0.7;
 		margin-top: 0.75rem;
 	}
-
-	.separator {
-		opacity: 0.5;
-	}
 </style>
