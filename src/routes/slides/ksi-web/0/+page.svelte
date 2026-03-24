@@ -9,10 +9,14 @@
 </script>
 
 <Slide class="relative h-full w-full">
-	<img alt="Header" class="fragment absolute top-0 left-0 w-max" src="/HeaderUWR.jpg" />
+	<img
+		alt="Header"
+		class="fragment absolute top-0 left-1/2 w-max -translate-x-1/2"
+		src="/HeaderUWR.jpg"
+	/>
 
 	<div class="flex h-full flex-col items-center justify-center">
-		<h1 class="text-white">frontendowcy #00</h1>
+		<h1 class="text-white">webowcy #00</h1>
 		<ul class="list-none p-0 text-start text-lg">
 			<li>0. organizacja pracy w grupie</li>
 			<li>
@@ -31,7 +35,7 @@
 		<h1>Organizacja pracy w grupie</h1>
 	</Slide>
 	<Slide class="flex h-screen flex-col py-40 text-start">
-		<h1 class="text-white">grupa frontendowcy</h1>
+		<h1 class="text-white">grupa webowcy</h1>
 		<ul class="list-disc p-0 text-start text-lg">
 			<li class="fragment" data-fragment-index="0">główne zadanie: strona KSI</li>
 			<img
@@ -93,6 +97,12 @@
 </Slide>
 
 <Slide>
+	<Slide>
+		<h1>Etap 1.</h1>
+
+		<p>Czym jest HTML i jak go ładnie ubrać? Podstawy web designu.</p>
+		<i>HTML + CSS</i>
+	</Slide>
 	<Slide class="flex w-screen flex-row">
 		<ThreeColumn
 			columnClass="flex flex-col font-script text-blue-300 [&>div]:flex [&>div]:flex-col [&>div]:items-center items-center justify-center"
@@ -192,7 +202,7 @@ wiersza</tag>`}
 		</div>
 	</Slide>
 	<Slide class="flex-start h-screen w-screen">
-		Niektóre tagi nie wykorzystują zawartości. Wtedy możemy je zapisać w skrócocnej formie:
+		Niektóre tagi nie wykorzystują zawartości. Wtedy możemy je zapisać w skróconej formie:
 		<Highlight language={xml} code={`<tag />`} />
 
 		<div class="fragment">
@@ -459,7 +469,83 @@ wiersza</tag>`}
 			</li>
 		</ul>
 		<p class="fragment mt-4 text-red-400">
-			Uwaga: średnik (<code>;</code>) jest wredny i zapominając o nim, można stracić sporo czasu.
+			Uwaga: średnik (<code>;</code>) jest wredny i zapominając o nim można stracić sporo czasu.
 		</p>
 	</Slide>
+	<Slide>
+		<div class="h-full w-full -translate-x-8">
+			<LiveHtmlEditor initialSteps={code0.css} />
+		</div>
+	</Slide>
+	<Slide>
+		<h2>Niektóre z cech</h2>
+		<p>
+			Najlepiej jest uczyć się tych cech progresywnie, gdy pisząc kod potrzebujemy zrobić
+			coś nowego. Mimo to, aby zacząć warto znać parę takich cech:
+		</p>
+		<ul class="text-[14px]!">
+			<li><code>font-size</code> - ustawia wielkość tekstu</li>
+			<li><code>font-weight</code> - ustawia grubość (pogrubienie) tekstu</li>
+			<li><code>text-align</code> - wyrównuje tekst (np. do środka)</li>
+			<li><code>border-radius</code> - pozwala zaokrąglić rogi elementu</li>
+			<li><code>margin</code> - tworzy wolną przestrzeń na zewnątrz elementu</li>
+			<li><code>padding</code> - tworzy wolną przestrzeń wewnątrz elementu</li>
+		</ul>
+
+		<p>
+			<a target="_blank" href="https://www.w3schools.com/cssref/index.php"
+				>Zobacz wszystkie cechy w CSS</a
+			>
+		</p>
+	</Slide>
+	<Slide>
+		<h2>Layout</h2>
+		<p>
+			Nic nie będzie z naszych świetnie dobranych kolorów, jeśli nie zadbamy o tego, czego nie widać
+			- czyli o negative space. Jest to jeden z najważniejszych konceptów w grafice. Układ strony
+			szczególnie potrzebuje miejsca do oddychania, tak aby przyciski nie nachodziły na siebie,
+			teksty zachęcały użytkownika do ich przeczytania itd.
+		</p>
+		<p>
+			Dbanie o układ przy użyciu CSS jest bajecznie prosty, ale dopiero po nieprzespanych godzinach
+			spędzonych na próbowaniu każdej permutacji cech odpowiedzialnych za układ. Aby pomóc wam
+			uniknąć męczarni przez które musiało przejść zbyt wiele osób, postaram się pokazać na
+			przykładach najczęstsze układy, i jak je rozwiązać.
+		</p>
+	</Slide>
+	<Slide>
+		<h2>"Odstępy"</h2>
+		<div class="h-full w-full -translate-x-8">
+			<LiveHtmlEditor initialSteps={code0.challenges.paddings} />
+		</div>
+	</Slide>
+	<Slide>
+		<h2>"Dwie kolumny"</h2>
+		<div class="h-full w-full -translate-x-8">
+			<LiveHtmlEditor initialSteps={code0.challenges.twocols} />
+		</div>
+	</Slide>
+</Slide>
+<Slide>
+	<Slide>
+		<h2>Tailwindcss</h2>
+		<p>
+			W dzisiejszym świecie rzadko kiedy polega się na CSS w klasycznym sensie. Teraz modne (oraz
+			wydajne) jest używanie Tailwindcss.
+		</p>
+		<p class="fragment">
+			Tailwindcss udostępnia masę klas które możemy dostosowywać, a więc stylujemy elementy
+			bezpośrednio w atrybucie <code>class</code>.
+		</p>
+	</Slide>
+	<Slide>
+		<div class="h-full w-full -translate-x-8">
+			<LiveHtmlEditor initialSteps={code0.tailwindcss} />
+		</div>
+	</Slide>
+</Slide>
+<Slide>
+	<h2>To już jest koniec</h2>
+	<p>Ciąg dalszy za tydzień</p>
+	<p>Michał Kosior</p>
 </Slide>

@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { emmetHTML } from 'emmet-monaco-es';
 	import * as monaco from 'monaco-editor';
+	import { emmetHTML } from 'emmet-monaco-es';
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 	import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 	import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-	let { initialSteps = [''] } = $props();
+	import Reveal from 'reveal.js';
+	import { getContext } from 'svelte';
 
+	let { initialSteps = [''] } = $props();
 	// Stan
 	let steps = $state<string[]>(initialSteps);
 	let currentIndex = $state(0);
@@ -14,6 +16,9 @@
 
 	let editorElement = $state<HTMLElement | undefined>();
 	let editor: monaco.editor.IStandaloneCodeEditor;
+	let container = $state<HTMLElement>();
+
+	const reveal = getContext<{ deck: any }>('reveal');
 
 	// Czy obecny kod pasuje do któregoś zapisanego kroku?
 	let matchedStepIndex = $derived(steps.findIndex((s) => s.trim() === editorValue.trim()));
@@ -29,37 +34,98 @@
 		};
 	}
 
+	const destroyEditor = () => {
+		if (editor) {
+			editor.dispose();
+			editor = undefined;
+		}
+	};
+
+	const createEditor = () => {
+		if (!editorElement || editor) return;
+
+		ensureMonacoConfig();
+
+		editor = monaco.editor.create(editorElement, {
+			value: editorValue,
+			language: 'html',
+			theme: 'vs-dark',
+			automaticLayout: true,
+			linkedEditing: true,
+			minimap: { enabled: false },
+			lineNumbers: 'off',
+			wordWrap: 'on',
+			padding: { top: 10 }
+		});
+
+		editor.onDidChangeModelContent(() => {
+			if (editor) editorValue = editor.getValue();
+		});
+
+		// Twoje Ctrl+S i inne bindy...
+		editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+			editor?.getAction('editor.action.formatDocument')?.run();
+			if (isEditMode) steps[currentIndex] = editorValue;
+		});
+
+		editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.BracketLeft, () => {
+			if (currentIndex > 0) goToStep(currentIndex - 1);
+		});
+
+		editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.BracketRight, () => {
+			if (currentIndex < steps.length - 1) goToStep(currentIndex + 1);
+			else if (isEditMode) saveAsNew();
+		});
+	};
+
+	let isMonacoConfigured = false;
+
+	function ensureMonacoConfig() {
+		if (isMonacoConfigured || typeof window === 'undefined') return;
+
+		(window as any).MonacoEnvironment = {
+			getWorker(_: any, label: string) {
+				if (label === 'html') return new htmlWorker();
+				if (label === 'css') return new cssWorker();
+				return new editorWorker();
+			}
+		};
+
+		emmetHTML(monaco); // Rejestracja Emmeta
+		isMonacoConfigured = true;
+	}
+
+	const syncWithReveal = (event?: any) => {
+		const deck = reveal.deck;
+		if (!deck || !container) return;
+
+		// Używamy metod na instancji 'deck', nie na klasie 'Reveal'
+		const currentSlide = event?.currentSlide || deck.getCurrentSlide();
+		const mySlide = container.closest('section');
+
+		if (currentSlide === mySlide) {
+			setTimeout(createEditor, 300);
+		} else {
+			destroyEditor();
+		}
+	};
+
 	$effect(() => {
-		if (editorElement && !editor) {
-			emmetHTML(monaco);
+		// Jeśli deck już istnieje (np. zmiana slajdu po inicjalizacji)
+		if (reveal.deck) {
+			const deck = reveal.deck;
+			deck.on('slidechanged', syncWithReveal);
+			deck.on('ready', syncWithReveal);
+			deck.on('fragmentshown', syncWithReveal);
 
-			editor = monaco.editor.create(editorElement, {
-				value: editorValue,
-				language: 'html',
-				theme: 'vs-dark',
-				minimap: { enabled: false },
-				automaticLayout: true,
-				fontSize: 14, // Nieco mniejszy font do gęstszego layoutu
-				lineNumbers: 'off',
-				glyphMargin: false,
-				folding: false,
-				scrollbar: { vertical: 'hidden', horizontal: 'hidden' },
-				overviewRulerLanes: 0,
-				lineDecorationsWidth: 0,
-				renderLineHighlight: 'none',
-				wordWrap: 'on'
-			});
+			syncWithReveal(); // Sprawdzenie na start
 
-			editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
-				editor.getAction('editor.action.formatDocument')?.run();
-
-				if (isEditMode) {
-					updateCurrent();
-				}
-			});
-			editor.onDidChangeModelContent(() => {
-				editorValue = editor.getValue();
-			});
+			return () => {
+				deck.off('slidechanged', syncWithReveal);
+				deck.off('ready', syncWithReveal);
+				deck.off('fragmentshown', syncWithReveal);
+				destroyEditor();
+			};
 		}
 	});
 
@@ -87,12 +153,51 @@
 	function handleKeydown(e: KeyboardEvent) {
 		e.stopPropagation();
 	}
+
+	let injectedHtml = $derived(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        \<script src="https://cdn.tailwindcss.com">\</script\>
+        
+        \<script\>
+            // Konfiguracja Tailwinda, aby pasował do Twojej prezentacji
+            tailwind.config = {
+              corePlugins: {
+                preflight: false,
+              }
+           }
+        \</script\>
+
+        <style type="text/tailwindcss">
+            /* Tutaj możesz dopisać własne style używając @apply */
+            body {
+                @apply p-8 font-sans;
+            }
+
+            h1 {
+              @apply text-3xl;
+            }
+            h2 {
+              @apply text-2xl;
+            }
+        </style>
+    </head>
+    <body>
+        ${editorValue}
+    </body>
+    </html>
+  `);
 </script>
 
 <div
-	class="mx-auto flex h-[600px] w-[950px] flex-col overflow-hidden rounded-xl border border-white/10 bg-[#1e1e1e] shadow-2xl"
+	bind:this={container}
+	class="mx-auto flex h-[600px] w-full flex-col overflow-hidden rounded-xl border border-white/10 bg-[#1e1e1e] shadow-2xl"
 >
-	<div class="grid flex-grow grid-cols-[60px_1fr_1fr] overflow-hidden">
+	<div class="grid grow grid-cols-[60px_1fr_1fr] overflow-hidden">
 		<aside
 			class="relative flex h-full flex-col items-center gap-3 overflow-y-scroll border-r border-white/5 bg-[#111] pb-4"
 		>
@@ -141,21 +246,18 @@
 			{/if}
 		</aside>
 
-		<section
-			class="relative top-0! left-0! m-4 h-full border-r border-white/5 bg-[#1e1e1e]"
-			onkeydown={handleKeydown}
-		>
+		<div class="border-r border-white/5 bg-[#1e1e1e]" onkeydown={handleKeydown}>
 			<div bind:this={editorElement} class="h-full w-full"></div>
-		</section>
+		</div>
 
-		<section class="h-full w-full bg-white">
+		<div class="h-full w-full bg-white">
 			<iframe
 				title="Live Preview"
-				srcdoc={editorValue}
-				class="h-full w-full border-none"
+				srcdoc={injectedHtml}
+				class="m-0! h-full w-full border-none"
 				sandbox="allow-scripts"
 			></iframe>
-		</section>
+		</div>
 	</div>
 
 	<footer

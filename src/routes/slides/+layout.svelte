@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
+	import { onMount, setContext, type Snippet } from 'svelte';
 	import Reveal from 'reveal.js';
 	import Markdown from 'reveal.js/plugin/markdown';
 	import Notes from 'reveal.js/plugin/notes';
 
 	let { children }: { children: Snippet } = $props();
+
+	let revealRes = $state({ deck: null as any });
+
+	setContext('reveal', revealRes);
 
 	onMount(() => {
 		const deck = new Reveal({
@@ -15,7 +19,9 @@
 			hash: true
 		});
 
-		deck.initialize();
+		deck.initialize().then(() => {
+			revealRes.deck = deck;
+		});
 	});
 </script>
 
