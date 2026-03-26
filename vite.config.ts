@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import monacoEditorPlugin from 'vite-plugin-monaco-editor';
 
 const monacoPluginFactory =
+	// @ts-expect-error this is a workaround for a known issue with the monaco editor plugin
 	typeof monacoEditorPlugin === 'function' ? monacoEditorPlugin : monacoEditorPlugin.default;
 
 export default defineConfig(({ command }) => ({
