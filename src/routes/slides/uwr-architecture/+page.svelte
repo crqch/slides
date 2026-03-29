@@ -22,7 +22,7 @@
 		<h2>When exactly does a building become the University's?</h2>
 	</Slide>
 	<Slide align="center">
-		<img src="/architecture/s1.jpg" alt="" />
+		<img src="/architecture/s1.webp" alt="" />
 		<aside class="notes">So... First of all, when does a building belong to the University?</aside>
 	</Slide>
 	{#each [0, 1, 2] as key (key)}
@@ -45,20 +45,20 @@
 		<h3 class="fragment fade-out" data-fragment-index="0">The University's Main Building</h3>
 		<div class="r-stack" style="height: 550px;">
 			<img
-				src="/architecture/barok_1.jpg"
+				src="/architecture/barok_1.webp"
 				alt=""
 				data-fragment-index="0"
 				class="fragment current-visible size-full contain-content"
 			/>
 			{#each new Array(13).fill(1) as _, i (i)}
 				<img
-					src={`/architecture/barok_${i + 2}.jpg`}
+					src={`/architecture/barok_${i + 2}.webp`}
 					alt=""
 					class="fragment current-visible width-full height-full contain-content"
 				/>
 			{/each}
 			<img
-				src="/architecture/barok_2.jpg"
+				src="/architecture/barok_2.webp"
 				alt=""
 				class="fragment width-full height-full contain-content"
 			/>
@@ -94,30 +94,30 @@
 				<p>Currently being house to the Institute of Archeology</p>
 			</div>
 
-			<img src="/architecture/barok_15.jpg" alt="" />
-			<img src="/architecture/barok_17.jpg" alt="" />
-			<img src="/architecture/barok_16.jpg" alt="" />
+			<img src="/architecture/barok_15.webp" alt="" />
+			<img src="/architecture/barok_17.webp" alt="" />
+			<img src="/architecture/barok_16.webp" alt="" />
 		</div>
 	</Slide>
 	<Slide>
-		<img src="/architecture/barok_17.jpg" alt="" />
+		<img src="/architecture/barok_17.webp" alt="" />
 	</Slide>
 	<Slide>
-		<img src="/architecture/barok_16.jpg" alt="" />
+		<img src="/architecture/barok_16.webp" alt="" />
 	</Slide>
 	<Slide>
 		<div class="r-stack">
 			<div data-fragment-index="0" class="fragment fade-out grid grid-cols-2 grid-rows-2">
-				<img src="/architecture/barok_18.jpg" alt="" />
-				<img src="/architecture/barok_19.jpg" alt="" />
-				<img src="/architecture/barok_20.jpg" alt="" />
-				<img src="/architecture/barok_21.jpg" alt="" />
+				<img src="/architecture/barok_18.webp" alt="" />
+				<img src="/architecture/barok_19.webp" alt="" />
+				<img src="/architecture/barok_20.webp" alt="" />
+				<img src="/architecture/barok_21.webp" alt="" />
 			</div>
 
-			<img data-fragment-index="0" src="/architecture/barok_18.jpg" class="fragment" alt="" />
-			<img src="/architecture/barok_19.jpg" class="fragment" alt="" />
-			<img src="/architecture/barok_20.jpg" class="fragment" alt="" />
-			<img src="/architecture/barok_21.jpg" class="fragment" alt="" />
+			<img data-fragment-index="0" src="/architecture/barok_18.webp" class="fragment" alt="" />
+			<img src="/architecture/barok_19.webp" class="fragment" alt="" />
+			<img src="/architecture/barok_20.webp" class="fragment" alt="" />
+			<img src="/architecture/barok_21.webp" class="fragment" alt="" />
 			<aside class="notes">
 				First image: This image shows the building which was the host to a Premonstratensian
 				Monastery (Klasztor Norbertanów), this is why the baroque style is much more moderate, but
@@ -130,13 +130,13 @@
 	<Slide>
 		<div class="r-stack">
 			<img
-				src="/architecture/barok_22.jpg"
+				src="/architecture/barok_22.webp"
 				class="fragment fade-out"
 				data-fragment-index="0"
 				alt=""
 			/>
 			<img
-				src="/architecture/classic_1.jpg"
+				src="/architecture/classic_1.webp"
 				class="fragment current-visible"
 				data-fragment-index="0"
 				alt=""
@@ -152,25 +152,25 @@
 				<h2>Period 2: 19th Century Expansion & Visionaries</h2>
 				<h3>(1811 – early 20th Century)</h3>
 			</div>
-			<img src="/architecture/classic_3.jpg" alt="" class="h-full w-full object-cover" />
-			<img src="/architecture/classic_5.jpg" alt="" class="h-full w-full object-cover" />
-			<img src="/architecture/classic_6.jpg" alt="" class="h-full w-full object-cover" />
+			<img src="/architecture/classic_3.webp" alt="" class="h-full w-full object-cover" />
+			<img src="/architecture/classic_5.webp" alt="" class="h-full w-full object-cover" />
+			<img src="/architecture/classic_6.webp" alt="" class="h-full w-full object-cover" />
 		</div>
 	</Slide>
 	<Slide>
 		<div class="r-stack">
-			<img src="/architecture/classic_3.jpg" alt="" />
-			<img src="/architecture/classic_2.jpg" class="fragment" alt="" />
+			<img src="/architecture/classic_3.webp" alt="" />
+			<img src="/architecture/classic_2.webp" class="fragment" alt="" />
 		</div>
 	</Slide>
 	<Slide>
 		<div class="r-stack r-stretch">
-			<img src="/architecture/classic_4.jpg" class="h-full object-contain" alt="" />
-			<img src="/architecture/classic_5.jpg" class="fragment h-full object-contain" alt="" />
+			<img src="/architecture/classic_4.webp" class="h-full object-contain" alt="" />
+			<img src="/architecture/classic_5.webp" class="fragment h-full object-contain" alt="" />
 		</div>
 	</Slide>
 	<Slide>
-		<img src="/architecture/classic_6.jpg" alt="" />
+		<img src="/architecture/classic_6.webp" alt="" />
 	</Slide>
 </Slide>
 
@@ -196,28 +196,28 @@
 				</ul>
 			</div>
 
-			<img src="/architecture/wspolczesnosc_2.jpg" alt="" />
-			<img src="/architecture/wspolczesnosc_4.jpg" alt="" />
-			<img src="/architecture/wspolczesnosc_17.jpg" alt="" />
+			<img src="/architecture/wspolczesnosc_2.webp" alt="" />
+			<img src="/architecture/wspolczesnosc_4.webp" alt="" />
+			<img src="/architecture/wspolczesnosc_17.webp" alt="" />
 		</div>
 	</Slide>
 	<Slide>
 		<div class="r-stack" style="height: 550px;">
 			<img
-				src="/architecture/wspolczesnosc_1.jpg"
+				src="/architecture/wspolczesnosc_1.webp"
 				alt=""
 				data-fragment-index="0"
 				class="fragment fade-out width-full height-full contain-content"
 			/>
 			<img
-				src="/architecture/wspolczesnosc_2.jpg"
+				src="/architecture/wspolczesnosc_2.webp"
 				alt=""
 				data-fragment-index="0"
 				class="fragment current-visible width-full height-full contain-content"
 			/>
 			{#each new Array(15).fill(1) as _, i (i)}
 				<img
-					src={`/architecture/wspolczesnosc_${i + 3}.jpg`}
+					src={`/architecture/wspolczesnosc_${i + 3}.webp`}
 					alt=""
 					class="fragment current-visible width-full height-full contain-content"
 				/>
