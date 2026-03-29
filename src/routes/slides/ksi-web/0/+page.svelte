@@ -207,7 +207,7 @@ wiersza</tag>`}
 
 		<div class="fragment">
 			Każdemu elementowi HTML możemy nadać jakieś atrybuty (attributes), np:
-			<Highlight language={xml} code={`<tekst kolor="zielony">Hello World!</tekst>`} />
+			<Highlight language={xml} code="<tekst kolor=&quot;zielony&quot;>Hello World!</tekst>" />
 		</div>
 
 		<div class="fragment">
@@ -267,7 +267,7 @@ wiersza</tag>`}
 			{#snippet right()}
 				<div class="flex flex-col gap-4 rounded-lg border-2 border-green-400 bg-green-400/5 p-6">
 					<h2 class="font-bold! text-green-400">
-						Inline (np. <code>{'<span>'}</code>, <code>{'<b>'}</code>)
+						Inline (np. <code>&lt;span&gt;</code>, <code>&lt;b&gt;</code>)
 					</h2>
 					<ul class="list-disc space-y-2 text-start">
 						<li>Zajmuje tylko <b>tyle miejsca, ile potrzebuje</b>.</li>
@@ -299,7 +299,7 @@ wiersza</tag>`}
 	</Slide>
 	<Slide>
 		<p>
-			Przed zrozumieniem składni, musimy wiedzieć w jaki sposób powiedzieć CSSowi by zmienił <b
+			Przed zrozumieniem składni, musimy wiedzieć w jaki sposób powiedzieć CSSowi by zmienił <b
 				>ten, konkretny</b
 			>
 			element. Robimy to za pomocą selektorów. Te działają trochę jak soki-bary z przedmiotu
@@ -326,7 +326,7 @@ wiersza</tag>`}
 	<Slide>
 		<h2>class(name)</h2>
 		<p>
-			Gdybyśmy mieli aplikować jakiś styl do wszystkich elementów w naszym dokumencie, które mają
+			Gdybyśmy mieli aplikować jakiś styl do wszystkich elementów w naszym dokumencie, które mają
 			dany tag, to szybko zabrakło by nam tagów. Z pomocą przychodzi selektor class(name). Możemy
 			wybranym elementom, bezpośrednio w HTML za pomocą atrybutu <code>class</code> nadać daną klasę,
 			której wygląd później specyfikujemy w CSS.
@@ -336,7 +336,7 @@ wiersza</tag>`}
 			code={`<p class="name">Adam Nowak</p>
 <p class="age">Wiek: 29 lat</p>`}
 		/>
-		<p>Aby wybrać klasę <code>name</code>, należy przed nazwą klasy dodać kropkę (.)</p>
+		<p>Aby wybrać klasę <code>name</code>, należy przed nazwą klasy dodać kropkę (.)</p>
 		<div class="flex flex-row">
 			<div>
 				<code class="text-fuchsia-400">.<span class="text-green-300">name</span></code><br />
@@ -351,7 +351,7 @@ wiersza</tag>`}
 	<Slide>
 		<h2>id</h2>
 		<p>
-			Czasem potrzebujemy jeszcze większej precyzji, ku temu może służyć selektor id. Id jak
+			Czasem potrzebujemy jeszcze większej precyzji, ku temu może służyć selektor id. Id jak
 			identyfikator, powinien być zaaplikowany tylko do jednego elementu na stronie. Można sobie
 			wyobrazić sytuację, że śledzimy który element z listy użytkownik ma zaznaczony. Wtedy (poza
 			innymi selektorami) moglibyśmy użyć id i ustawić temu elementowi <code>id="selected"</code>.
@@ -366,7 +366,7 @@ wiersza</tag>`}
 <p class="produkt">Wózek widłowy</p>`}
 		/>
 		<p>
-			Aby wybrać id <code>selected</code>, należy przed nazwą identyfikatora dodać hash/krzyżyk (#)
+			Aby wybrać id <code>selected</code>, należy przed nazwą identyfikatora dodać hash/krzyżyk (#)
 		</p>
 		<code class="text-fuchsia-400">#<span class="text-green-300">selected</span></code>
 		<p class="text-base! text-red-300">
@@ -419,7 +419,7 @@ wiersza</tag>`}
 		<p class="fragment">
 			Zastanówmy się nad jedzenie-ryba. Jakich selektorów moglibyśmy użyć, aby wybrać <Highlight
 				class="m-0! inline-flex! w-min! p-0!"
-				code={`<p class="jedzenie ryba">Tuńczyk w puszce</p>`}
+				code="<p class=&quot;jedzenie ryba&quot;>Tuńczyk w puszce</p>"
 				language={xml}
 			/>?
 		</p>
@@ -430,8 +430,8 @@ wiersza</tag>`}
 		</p>
 		<p class="fragment">
 			Podobnie dla jedzenie-karma, wychodzi <code>.jedzenie.karma</code> oraz
-			<code>.zwierzak.ryba</code> dla zwierzak-ryba. Kolejność selektorów nie ma znaczenia, bo przekrój
-			zbiorów jest operacją przemienną.
+			<code>.zwierzak.ryba</code> dla zwierzak-ryba. Kolejność selektorów nie ma znaczenia, bo przekrój
+			zbiorów jest operacją przemienną.
 		</p>
 		<p class="fragment">
 			Można się jeszcze zastanowić, jaki kolor będzie miał Tuńczyk w puszce, skoro mówimy <code
@@ -479,8 +479,8 @@ wiersza</tag>`}
 	<Slide>
 		<h2>Niektóre z cech</h2>
 		<p>
-			Najlepiej jest uczyć się tych cech progresywnie, gdy pisząc kod potrzebujemy zrobić
-			coś nowego. Mimo to, aby zacząć warto znać parę takich cech:
+			Najlepiej jest uczyć się tych cech progresywnie, gdy pisząc kod potrzebujemy zrobić coś
+			nowego. Mimo to, aby zacząć warto znać parę takich cech:
 		</p>
 		<ul class="text-[14px]!">
 			<li><code>font-size</code> - ustawia wielkość tekstu</li>
@@ -508,7 +508,7 @@ wiersza</tag>`}
 		<p>
 			Dbanie o układ przy użyciu CSS jest bajecznie prosty, ale dopiero po nieprzespanych godzinach
 			spędzonych na próbowaniu każdej permutacji cech odpowiedzialnych za układ. Aby pomóc wam
-			uniknąć męczarni przez które musiało przejść zbyt wiele osób, postaram się pokazać na
+			uniknąć męczarni przez które musiało przejść zbyt wiele osób, postaram się pokazać na
 			przykładach najczęstsze układy, i jak je rozwiązać.
 		</p>
 	</Slide>

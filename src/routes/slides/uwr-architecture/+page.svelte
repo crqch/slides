@@ -25,8 +25,8 @@
 		<img src="/architecture/s1.jpg" alt="" />
 		<aside class="notes">So... First of all, when does a building belong to the University?</aside>
 	</Slide>
-	{#each [0, 1, 2] as key}
-		<Slide align="center" transition={'zoom'}>
+	{#each [0, 1, 2] as key (key)}
+		<Slide align="center" transition="zoom">
 			<img src={`/architecture/map${key}.png`} alt="" />
 			<p class="text-xs! opacity-50">
 				Buildings queried via <a href="https://overpass-turbo.eu/">overpass-turbo</a>, displayed in
@@ -50,7 +50,7 @@
 				data-fragment-index="0"
 				class="fragment current-visible size-full contain-content"
 			/>
-			{#each new Array(13).fill(1) as _, i}
+			{#each new Array(13).fill(1) as _, i (i)}
 				<img
 					src={`/architecture/barok_${i + 2}.jpg`}
 					alt=""
@@ -58,11 +58,12 @@
 				/>
 			{/each}
 			<img
-				src={`/architecture/barok_2.jpg`}
+				src="/architecture/barok_2.jpg"
 				alt=""
 				class="fragment width-full height-full contain-content"
 			/>
 		</div>
+
 		<aside class="notes">
 			The construction of University's Main Building began in 1728 with a great spatial constraint
 			that forced the buildings floor plan to be narrow and long. The building is situated alongside
@@ -214,7 +215,7 @@
 				data-fragment-index="0"
 				class="fragment current-visible width-full height-full contain-content"
 			/>
-			{#each new Array(15).fill(1) as _, i}
+			{#each new Array(15).fill(1) as _, i (i)}
 				<img
 					src={`/architecture/wspolczesnosc_${i + 3}.jpg`}
 					alt=""
