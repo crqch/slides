@@ -27,7 +27,7 @@
 	</Slide>
 	{#each [0, 1, 2] as key (key)}
 		<Slide align="center" transition="zoom">
-			<img src={`/architecture/map${key}.png`} alt="" />
+			<img src={`/architecture/map${key}.webp`} alt="" />
 			<p class="text-xs! opacity-50">
 				Buildings queried via <a href="https://overpass-turbo.eu/">overpass-turbo</a>, displayed in
 				QGIS Desktop software
