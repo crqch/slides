@@ -8,7 +8,7 @@
 		title="Architectural Styles of some of the University's buildings"
 		subtitle="Exploring the architectural history captured on matter."
 		author="Michał Kosior, Patryk Pujanek, Bartłomiej Kuźma"
-		date="March-April 2026"
+		date="2026-03-30"
 	/>
 	<aside class="notes">
 		What's going on everybody, today we would like to show you our findings about the architectural
