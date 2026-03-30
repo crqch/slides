@@ -16,7 +16,7 @@
 	/>
 
 	<div class="flex h-full flex-col items-center justify-center">
-		<h1 class="text-white">webowcy #00</h1>
+		<h1 class="text-white">webowcy #01</h1>
 		<ul class="list-none p-0 text-start text-lg">
 			<li>0. organizacja pracy w grupie</li>
 			<li>
