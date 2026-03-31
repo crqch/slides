@@ -41,6 +41,7 @@
 		"@fontsource/commit-mono": "^5.2.5",
 		"@types/reveal.js": "^5.2.2",
 		"emmet-monaco-es": "^5.7.0",
+		"lucide-svelte": "^1.0.1",
 		"monaco-editor": "^0.55.1",
 		"reveal.js": "^6.0.0",
 		"svelte-highlight": "^7.9.0",

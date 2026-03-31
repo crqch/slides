@@ -70,6 +70,8 @@
 		<a href="https://www.apple.com/pl/shop/buy-iphone">Apple Buy iPhone</a>
 		<a href="https://www.chaingpt.org/">ChainGPT</a>
 		<a href="https://www.stykka.com/">Stykka</a>
+		<br />
+		<a href="/ksi-web/live1" target="_blank">Strona z telefonem kodzona na spotkaniu</a>
 	</Slide>
 </Slide>
 
