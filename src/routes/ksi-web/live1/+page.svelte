@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Van, X } from 'lucide-svelte';
+	import { GitBranchIcon, Van, X } from 'lucide-svelte';
 	import { cubicOut } from 'svelte/easing';
 
 	let open = $state(false);
@@ -25,6 +25,11 @@
 </script>
 
 <div class="p-20">
+	<a
+		class="button mb-14 flex gap-4 text-xl!"
+		href="https://github.com/crqch/slides/blob/master/src/routes/ksi-web/live1/%2Bpage.svelte"
+		>GitHub <GitBranchIcon class="size-6" /></a
+	>
 	<h1 class="mb-8 text-3xl font-semibold">
 		Wszystkie modele. <span class="opacity-50">Który dla Ciebie?</span>
 	</h1>
