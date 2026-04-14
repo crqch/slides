@@ -20,7 +20,12 @@
 	const reveal = getContext<{ deck: any }>('reveal');
 
 	// Czy obecny kod pasuje do któregoś zapisanego kroku?
-	let matchedStepIndex = $derived(steps.findIndex((s) => s.trim() === editorValue.trim()));
+	let matchedStepIndex = $derived(
+		steps.findIndex((s) => {
+			const val = typeof s === 'string' ? s : (s as any).html || '';
+			return val.trim() === editorValue.trim();
+		})
+	);
 
 	// Musimy to ustawić zanim stworzymy edytor
 	if (typeof window !== 'undefined') {
@@ -60,6 +65,17 @@
 		editor.onDidChangeModelContent(() => {
 			if (editor) editorValue = editor.getValue();
 		});
+
+		// Powstrzymanie Reveal.js przed przechwytywaniem spacji w edytorze
+		editorElement.addEventListener(
+			'keydown',
+			(e) => {
+				if (e.key === ' ') {
+					e.stopPropagation();
+				}
+			},
+			true
+		);
 
 		// Twoje Ctrl+S i inne bindy...
 		editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
@@ -113,7 +129,8 @@
 		const normalized = initialSteps.length > 0 ? [...initialSteps] : [''];
 		steps = normalized;
 		currentIndex = 0;
-		editorValue = normalized[0] ?? '';
+		const first = normalized[0];
+		editorValue = typeof first === 'string' ? first : ((first as any).html ?? '');
 		if (editor) editor.setValue(editorValue);
 	});
 
@@ -138,7 +155,8 @@
 
 	const goToStep = (index: number) => {
 		currentIndex = index;
-		editorValue = steps[index] ?? '';
+		const step = steps[index];
+		editorValue = typeof step === 'string' ? step : ((step as any).html ?? '');
 		if (editor) editor.setValue(editorValue);
 	};
 
