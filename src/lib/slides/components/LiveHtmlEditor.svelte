@@ -43,6 +43,9 @@
 			editor.dispose();
 			editor = undefined;
 		}
+		if (reveal.deck) {
+			reveal.deck.configure({ keyboard: true });
+		}
 	};
 
 	const createEditor = () => {
@@ -66,16 +69,17 @@
 			if (editor) editorValue = editor.getValue();
 		});
 
-		// Powstrzymanie Reveal.js przed przechwytywaniem spacji w edytorze
-		editorElement.addEventListener(
-			'keydown',
-			(e) => {
-				if (e.key === ' ') {
-					e.stopPropagation();
-				}
-			},
-			true
-		);
+		editor.onDidFocusEditorText(() => {
+			if (reveal.deck) reveal.deck.configure({ keyboard: false });
+		});
+
+		editor.onDidBlurEditorText(() => {
+			if (reveal.deck) reveal.deck.configure({ keyboard: true });
+		});
+
+		editorElement.addEventListener('wheel', (e) => {
+			e.stopPropagation();
+		});
 
 		// Twoje Ctrl+S i inne bindy...
 		editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
