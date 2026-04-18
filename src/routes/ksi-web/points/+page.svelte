@@ -63,6 +63,22 @@
 	const toggle = (name: string) => {
 		open[name] = !open[name];
 	};
+
+	let totalMaxPoints = data.listy.reduce((sum, list) => sum + list.max_points, 0);
+
+	let totals = Object.keys(data.listy[0].points).map((name) => {
+		let total = 0;
+		for (const list of data.listy) {
+			if (list.points[name]) {
+				total += list.points[name].points;
+			}
+		}
+		return { name, points: total };
+	});
+	// Sort by points desc
+	totals.sort((a, b) => b.points - a.points);
+
+	let maxTotalPoints = Math.max(0, ...totals.map((t) => t.points));
 </script>
 
 <svelte:head>
@@ -79,6 +95,46 @@
 		</header>
 
 		<div class="space-y-6">
+			<section class="overflow-hidden rounded-lg border border-yellow-500/30 bg-zinc-900 shadow-lg">
+				<div class="border-b border-yellow-500/20 bg-yellow-500/10 p-4">
+					<h2 class="text-xl font-bold tracking-wide text-yellow-500 uppercase">Podsumowanie</h2>
+				</div>
+				<div class="overflow-x-auto bg-zinc-900/50 p-4">
+					<table class="w-full border-collapse text-left whitespace-nowrap">
+						<thead>
+							<tr class="border-b border-yellow-500/20 text-sm text-yellow-500/80 uppercase">
+								<th class="p-3 font-medium">Uczeń</th>
+								<th class="p-3 text-right font-medium">Suma Punktów</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each totals as t (t.name)}
+								<tr
+									class="border-b border-yellow-500/10 transition-colors hover:bg-zinc-800/50 {t.points ===
+										maxTotalPoints && t.points > 0
+										? 'bg-yellow-500/20'
+										: ''}"
+								>
+									<td class="p-3 align-top">
+										<span class="font-medium text-zinc-200">{t.name}</span>
+									</td>
+									<td class="p-3 text-right align-top">
+										<span
+											class="text-lg font-bold {t.points >= totalMaxPoints * 0.5
+												? 'text-zinc-100'
+												: 'text-red-400'}"
+										>
+											{t.points}
+										</span>
+										<span class="text-zinc-500"> / {totalMaxPoints}</span>
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			</section>
+
 			{#each data.listy as list (list.name)}
 				{@const maxPoints = Math.max(0, ...Object.values(list.points).map((s) => s.points))}
 				<section class="overflow-hidden rounded-lg border border-blue-500/20 bg-zinc-900 shadow-lg">
