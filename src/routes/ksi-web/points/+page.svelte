@@ -31,8 +31,22 @@
 					},
 					Piotr: {
 						done: ['1', '4'],
-						points: 2,
+						points: 6,
 						note: 'warunkowe zaliczenie, sytuacja nadzwyczajna'
+					}
+				}
+			},
+			{
+				name: 'Lista 2',
+				max_points: 15,
+				points: {
+					Agata: {
+						done: ['1', '2'],
+						points: 6
+					},
+					Karol: {
+						done: ['1', '2'],
+						points: 5
 					}
 				}
 			}
@@ -135,6 +149,7 @@
 												</td>
 											</tr>
 										{/each}
+										<tr> </tr>
 									</tbody>
 								</table>
 							</div>
