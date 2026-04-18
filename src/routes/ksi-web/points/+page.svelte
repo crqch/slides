@@ -103,7 +103,7 @@
 					<table class="w-full border-collapse text-left whitespace-nowrap">
 						<thead>
 							<tr class="border-b border-yellow-500/20 text-sm text-yellow-500/80 uppercase">
-								<th class="p-3 font-medium">Uczeń</th>
+								<th class="p-3 font-medium">Imię</th>
 								<th class="p-3 text-right font-medium">Suma Punktów</th>
 							</tr>
 						</thead>
@@ -160,7 +160,7 @@
 								<table class="w-full border-collapse text-left whitespace-nowrap">
 									<thead>
 										<tr class="border-b border-blue-500/20 text-sm text-blue-400/80 uppercase">
-											<th class="p-3 font-medium">Uczeń</th>
+											<th class="p-3 font-medium">Imię</th>
 											<th class="p-3 font-medium">Zrobione zadania</th>
 											<th class="p-3 text-right font-medium">Punkty</th>
 										</tr>
